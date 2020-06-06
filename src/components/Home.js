@@ -1,5 +1,7 @@
 import React ,{Component} from 'react'
 import axios from 'axios'
+import Pokeball from '../pokeball.png'
+import {Link} from 'react-router-dom'
 class  Home extends Component{
 state={
     posts:[]
@@ -21,10 +23,13 @@ axios.get('https://jsonplaceholder.typicode.com/posts')
           posts.map(post=>{
               return(
                   <div className="post card" key={post.id}>
+                  <img src={Pokeball} alt="a pokeball"/>
                   <div className="card-content">
-
-               <span className="card-title">{post.title}</span> 
+                  <Link to={'/'+post.id}>
+               <span className="card-title red-text">{post.title}</span> 
+               </Link>
                      <p>{post.body}</p>
+
                   </div>
 
                   </div>
@@ -35,7 +40,7 @@ axios.get('https://jsonplaceholder.typicode.com/posts')
       )
         
     return(
-        <div className="container">
+        <div className="container home">
             <h4 className="center">Home</h4>
             {postList}
             </div>
